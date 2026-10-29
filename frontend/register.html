@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sign Up · Smart Posture Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="auth-page">
+  <section class="auth-card">
+    <h1>Create account</h1>
+    <p class="sub">start monitoring your posture</p>
+    <form id="register-form">
+      <label for="username">USERNAME</label>
+      <input id="username" type="text" autocomplete="username" required />
+      <label for="password">PASSWORD</label>
+      <input id="password" type="password" autocomplete="new-password" required />
+      <label for="confirm">CONFIRM PASSWORD</label>
+      <input id="confirm" type="password" autocomplete="new-password" required />
+      <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+    <p id="msg" class="error hidden"></p>
+    <p class="switch">Already have an account? <a href="/login">Log in</a></p>
+  </section>
+</main>
+<script src="js/auth.js"></script>
+</body>
+</html>

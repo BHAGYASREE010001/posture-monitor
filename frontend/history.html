@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>History · Smart Posture Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div>
+      <h1 class="brand">Smart Posture Monitor</h1>
+      <p class="sub">posture history // last 100 readings</p>
+    </div>
+    <nav class="userbar">
+      <a href="/" class="link-orange">Live Monitor</a>
+      <span id="username" class="muted"></span>
+      <button id="logout" class="link-red">Log out</button>
+    </nav>
+  </header>
+
+  <section class="stats">
+    <div class="card stat"><span class="label">TOTAL READINGS</span><span id="total" class="value">—</span></div>
+    <div class="card stat"><span class="label">GOOD POSTURE</span><span id="good" class="value good-text">—</span></div>
+    <div class="card stat"><span class="label">BAD POSTURE</span><span id="bad" class="value bad-text">—</span></div>
+  </section>
+
+  <section class="card">
+    <h2 class="card-title">RECENT READINGS</h2>
+    <table class="table">
+      <thead><tr><th>TIME</th><th>STATUS</th><th>CONFIDENCE</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p id="empty" class="muted hidden">No readings yet. Open the Live Monitor to start logging.</p>
+  </section>
+</div>
+<script src="js/history.js"></script>
+</body>
+</html>

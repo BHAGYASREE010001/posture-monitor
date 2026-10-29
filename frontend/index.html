@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smart Posture Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div>
+      <h1 class="brand">Smart Posture Monitor</h1>
+      <p class="sub">live biofeedback // MediaPipe pose estimation</p>
+    </div>
+    <nav class="userbar">
+      <a href="/history" class="link-orange">History</a>
+      <span id="username" class="muted"></span>
+      <button id="logout" class="link-red">Log out</button>
+    </nav>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <div id="posture-alert" class="alert hidden">
+        <strong id="alert-title">BAD POSTURE</strong>
+        Sit up straight, pull your head back over your shoulders, and relax your shoulders.
+      </div>
+
+      <div class="video-box">
+        <video id="video" autoplay playsinline muted class="hidden"></video>
+        <canvas id="canvas"></canvas>
+        <span id="person-badge" class="pill">NO PERSON</span>
+        <div id="bad-overlay" class="bad-overlay hidden">BAD POSTURE</div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile"><span class="label">HEAD HEIGHT</span><span id="neck" class="value">—</span></div>
+        <div class="tile"><span class="label">HEAD TILT</span><span id="tilt" class="value">—</span></div>
+        <div class="tile"><span class="label">BAD POSTURE DURATION</span><span id="bad-duration" class="value">0s</span></div>
+        <div class="tile"><span class="label">POSTURE SCORE</span><span id="score" class="value">—</span></div>
+      </div>
+      <p id="error-msg" class="error hidden"></p>
+    </section>
+
+    <section class="right">
+      <div class="card">
+        <h2 class="card-title">SPINE ALIGNMENT</h2>
+        <svg id="spine" viewBox="0 0 300 260" aria-label="Spine alignment"></svg>
+        <p class="caption">real-time curvature from live head position</p>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">SCORE OVER TIME</h2>
+        <div class="chart-wrap"><canvas id="scoreChart"></canvas></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">LEARNING</h2>
+        <p id="sample-counts" class="muted">Loading…</p>
+        <p class="hint">Samples are saved automatically while the monitor runs. Press <kbd>G</kbd> or <kbd>B</kbd> to correct a wrong reading.</p>
+        <div class="btn-row">
+          <button id="btn-calibrate" class="btn btn-good">Set good posture</button>
+          <button id="btn-good" class="btn btn-good">Mark GOOD (G)</button>
+          <button id="btn-bad" class="btn btn-bad">Mark BAD (B)</button>
+          <button id="btn-train" class="btn btn-train">Train now</button>
+        </div>
+        <p id="train-msg" class="muted"></p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="rest-alert" class="rest hidden">
+  <strong>Time to rest</strong>
+  You've been on screen for 1 minute. Stand up, look at something 20 feet away for 20 seconds, and stretch.
+  <div class="btn-row"><button id="rest-done" class="btn btn-good">I've rested</button></div>
+</div>
+
+<script type="module" src="js/monitor.js"></script>
+</body>
+</html>
